@@ -13,4 +13,4 @@ Route::post('/store-contas',  [ContaController::class, 'store'])->name('conta.st
 Route::get('/show-contas/{conta}',  [ContaController::class, 'show'])->name('conta.show');
 Route::get('/edit-contas/{conta}',  [ContaController::class, 'edit'])->name('conta.edit');
 Route::put('/update-contas/{conta}',  [ContaController::class, 'update'])->name('conta.update');
-Route::delete('/destroy-contas',  [ContaController::class, 'destroy'])->name('conta.destroy');
+Route::delete('/destroy-contas/{conta}',  [ContaController::class, 'destroy'])->name('conta.destroy');

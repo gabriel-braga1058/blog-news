@@ -14,7 +14,7 @@
 
     <div class="container">
 
-        
+
         <div class="container">
             <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
                 <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
@@ -25,7 +25,7 @@
                 </a>
 
                 <ul class="nav nav-pills">
-                    
+
                     <li class="nav-item"><a href="#" class="nav-link"></a></li>
                     <li class="nav-item"><a href="#" class="nav-link"></a></li>
                     <li class="nav-item"><a href="#" class="nav-link"></a></li>
@@ -34,6 +34,13 @@
             </header>
         </div>
 
+        <div class="container my-5">
+            @if(session('success'))
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+            </div>
+            @endif
+        </div>
 
 
 
@@ -48,6 +55,12 @@
                         <p class="card-text"> {{$conta->conteudo }}</p>
                         <a href="{{ route('conta.show', ['conta' => $conta->id])}}" class="btn btn-primary">Ler mais</a>
                         <a href="{{ route('conta.edit', ['conta' => $conta->id])}}" class="btn btn-primary">editar</a>
+                        <br><br>
+                        <form action="{{ route('conta.destroy', ['conta' => $conta->id])}}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-primary"  type="submit" onclick="return confirm('Tem certeza que  deseja apagar?')">Apagar</button>
+                        </form>
 
                     </div>
                 </div>

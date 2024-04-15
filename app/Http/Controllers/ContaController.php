@@ -55,8 +55,9 @@ class ContaController extends Controller
         ]);
         return redirect()->route('conta.show', ['conta' => $conta->id] )->with('success', 'Conteúdo editada com sucesso');
     }
-    public function destroy()
+    public function destroy(Conta $conta)
     {
-        dd('apagar');
+       $conta->delete();
+       return redirect()->route('conta.index', ['conta' => $conta->id] )->with('success', 'Conteúdo apagado com sucesso');
     }
 }
